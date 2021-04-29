@@ -1,0 +1,8 @@
+#/usr/share/logstash/config/logstash.yml
+http.host: "0.0.0.0"
+xpack.monitoring.enabled: false
+xpack.monitoring.elasticsearch.hosts: []
+pipeline.batch.size: ${BATCH_SIZE}
+pipeline.batch.delay: ${BATCH_DELAY}
+pipeline.workers: ${WORKERS}
+log.level: ${LOG_LEVEL}
