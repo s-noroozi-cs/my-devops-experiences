@@ -1,1 +1,8 @@
-for f in $(docker images |  grep -v SIZE | awk '{print $1"@"$2}' ); do name=$(echo $f | cut -d '@' -f1);  tag=$(echo $f | cut -d '@' -f2); docker save -o ${name}_${tag}.tar ${name}:${tag}  ; done
+for f in $(docker images |  grep -v REPOSITORY | awk '{print $1"@"$2}' );
+do
+   img_name=$(echo $f | cut -d '@' -f1);
+   img_tag=$(echo $f | cut -d '@' -f2);
+   file_name=$(echo $img_name | tr '/' '-')"_"$(echo $img_tag | tr '/' '-')".tar";
+   echo "save image: ${img_name} tag: ${img_tag} to file: ${file_name}"
+   docker save -o ${img_name}_${img_tag}.tar ${name}:${tag}
+done
