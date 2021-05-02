@@ -1,0 +1,1 @@
+for f in $(docker images |  grep -v SIZE | awk '{print $1"@"$2}' ); do name=$(echo $f | cut -d '@' -f1);  tag=$(echo $f | cut -d '@' -f2); docker save -o ${name}_${tag}.tar ${name}:${tag}  ; done
