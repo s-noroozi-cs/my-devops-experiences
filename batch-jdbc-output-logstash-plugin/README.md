@@ -1,4 +1,4 @@
-# batch-jdbc--output-logstash-plugin
+# batch-jdbc-output-logstash-plugin
 
 Logstash is very flexible tool to define pipeline to manage huge , complex and unstructured event logs.
 
