@@ -70,3 +70,21 @@ when CLIENTSSL_CLIENTCERT {
         }
     }
 }
+
+#For troubleshooting uncommented following lines to log more events and data
+# More SSL events and more logs
+
+#when CLIENTSSL_CLIENTHELLO {
+#	log local0.debug "CLIENTSSL_CLIENTHELLO"
+#}
+
+#when CLIENTSSL_HANDSHAKE {
+#	log local0.debug "CLIENTSSL_HANDSHAKE"
+#	SSL::collect
+#}
+
+#when CLIENTSSL_DATA {
+#    log local0.debug "CLIENTSSL_DATA"
+#    log local0.debug "payload [SSL::payload]"
+#    SSL::release
+#}
