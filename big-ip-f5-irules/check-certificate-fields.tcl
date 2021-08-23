@@ -88,3 +88,31 @@ when CLIENTSSL_CLIENTCERT {
 #    log local0.debug "payload [SSL::payload]"
 #    SSL::release
 #}
+
+
+# If You need some attributes of client certificate in your rest api, following event provided it.
+# Also I added original client ip address as "x-forward-for" header, because 
+# BIG-IP make new request for each client request. 
+# Then value of remote address attribute in your http request handler is IP address of "BIG-IP", it is not your original client IP address.
+# We added it as standard header ("x-forward-for) for next analyzing and processing.
+
+when HTTP_REQUEST {
+
+    #For security reason before add custom header, remove any old existed value
+
+    HTTP::header remove X-Forwarded-For
+	HTTP::header insert X-Forwarded-For [IP::remote_addr]
+	
+	regexp {CN=([^,]+)} [X509::subject [SSL::cert 0]] cn
+    regexp {O=([^,]+)} [X509::subject [SSL::cert 0]] o
+    set sn [X509::serial_number [SSL::cert 0]]
+    
+    HTTP::header remove x-client-certificate-cn
+    HTTP::header insert x-client-certificate-cn $cn
+    
+    HTTP::header remove x-client-certificate-o
+    HTTP::header insert x-client-certificate-o $o
+    
+    HTTP::header remove x-client-certificate-sn
+    HTTP::header insert x-client-certificate-sn $sn
+}
