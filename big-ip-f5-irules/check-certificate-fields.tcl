@@ -31,7 +31,7 @@ when CLIENTSSL_CLIENTCERT {
     # Check if client provided a cert
     if {[SSL::cert 0] eq ""}{
         # Reset the connection
-        log local0.warning "Client did not provide Certificate, it rejected."
+        log local0.warning "Client did not provide Certificate, it rejected, Client IP: [IP::client_addr]"
         reject
 
     } else {
@@ -63,9 +63,9 @@ when CLIENTSSL_CLIENTCERT {
       
       
         if { $match_cert equals 1 } {
-            log local0.notice "accept client certificate"
+            log local0.notice "Accept client certificate, Client IP: [IP::client_addr]"
         } else {
-            log local0.warning "No Matching Client Certificate Was Found"
+            log local0.warning "No Matching Client Certificate Was Found, Client IP: [IP::client_addr]"
             reject
         }
     }
@@ -75,17 +75,17 @@ when CLIENTSSL_CLIENTCERT {
 # More SSL events and more logs
 
 #when CLIENTSSL_CLIENTHELLO {
-#	log local0.debug "CLIENTSSL_CLIENTHELLO"
+#	log local0.debug "CLIENTSSL_CLIENTHELLO, Client IP: [IP::client_addr]"
 #}
 
 #when CLIENTSSL_HANDSHAKE {
-#	log local0.debug "CLIENTSSL_HANDSHAKE"
+#	log local0.debug "CLIENTSSL_HANDSHAKE, Client IP: [IP::client_addr]"
 #	SSL::collect
 #}
 
 #when CLIENTSSL_DATA {
 #    log local0.debug "CLIENTSSL_DATA"
-#    log local0.debug "payload [SSL::payload]"
+#    log local0.debug "Payload [SSL::payload], Client IP: [IP::client_addr]"
 #    SSL::release
 #}
 
@@ -101,9 +101,9 @@ when HTTP_REQUEST {
     #For security reason before add custom header, remove any old existed value
 
     HTTP::header remove X-Forwarded-For
-	HTTP::header insert X-Forwarded-For [IP::remote_addr]
+    HTTP::header insert X-Forwarded-For [IP::remote_addr]
 	
-	regexp {CN=([^,]+)} [X509::subject [SSL::cert 0]] cn
+    regexp {CN=([^,]+)} [X509::subject [SSL::cert 0]] cn
     regexp {O=([^,]+)} [X509::subject [SSL::cert 0]] o
     set sn [X509::serial_number [SSL::cert 0]]
     
