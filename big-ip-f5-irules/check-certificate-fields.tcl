@@ -12,14 +12,14 @@
 
 
 # Local Log Level:
-#	Level			Description															Verbosity
-#	emerg			Emergency system panic messages										Minimum
+#	Level			Description									Verbosity
+#	emerg			Emergency system panic messages							Minimum
 #	alert			Serious errors that require administrator intervention				Low
 #	crit			Critical errors, including hardware and filesystem failures			Low
-#	err				Non-critical, but possibly very important, error messages			Low
+#	err			Non-critical, but possibly very important, error messages			Low
 #	warning			Warning messages that should at least be logged for review			Medium
-#	notice			Messages that contain useful information, but may be ignored		Medium
-#	info			Messages that contain useful information, but may be ignored		High
+#	notice			Messages that contain useful information, but may be ignored			Medium
+#	info			Messages that contain useful information, but may be ignored			High
 #	debug			Messages that are only necessary for troubleshooting				Maximum
 
 
