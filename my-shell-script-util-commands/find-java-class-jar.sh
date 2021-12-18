@@ -1,6 +1,8 @@
 #${1} --> first parameter is path that you want to search on it
 #${2} --> seconf parameter is the class name that you want to search 
 
+#I prefer jar solution, because already exist in you environment and did not need to install any other things
+
 
 #using zipinfo 
 for f in $(find "${1}" -name "*.jar"); do zipinfo $f | grep "${2}" && echo $f ; done
