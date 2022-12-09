@@ -1,4 +1,4 @@
-FROM logstash:7.8.0
+FROM logstash:7.17.8
 
 ADD jvm.options /usr/share/logstash/config/jvm.options
 ADD logstash.yml /usr/share/logstash/config/logstash.yml
