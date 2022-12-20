@@ -1,4 +1,4 @@
-FROM logstash:7.17.8
+FROM logstash:8.5.3
 
 RUN /usr/share/logstash/bin/logstash-plugin install logstash-output-jdbc
 
