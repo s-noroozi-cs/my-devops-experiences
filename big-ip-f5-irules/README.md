@@ -18,3 +18,10 @@ In registration flows, we check some attribute of certificate such as common nam
 F5 provides data group and iRule features to achieve these requirements. 
 
 Registered information manage through data group, also checking and validation of certificates done in F5-iRule.
+
+Testing your script with **TesTcl**
+
+References: 
+
+1. https://github.com/landro/TesTcl
+2. https://testcl.com/
