@@ -25,3 +25,12 @@ References:
 
 1. https://github.com/landro/TesTcl
 2. https://testcl.com/
+
+
+References to complete articels:
+1. https://www.dclessons.com/bigip-f5-irule-concepts
+2. https://github.com/landro/TesTcl
+3. https://testcl.com/
+4. https://www.acunetix.com/vulnerabilities/web/bigip-irule-tcl-code-injection/
+5. https://community.f5.com/kb/technicalarticles/irules-concepts-tcl-the-how-and-why/275910
+6. https://my.f5.com/manage/s/article/K6091
